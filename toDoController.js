@@ -1,5 +1,5 @@
 var app = angular.module('myApp', []); 
-app.controller('toDoController', function($scope) {
+app.controller('toDoController', ['$scope', function($scope) {
     $scope.todoList = [];
    	$scope.sh = false;
     $scope.show = false;
@@ -46,4 +46,4 @@ app.controller('toDoController', function($scope) {
     	$scope.sh = false;
 
     }
-});
+}]);
