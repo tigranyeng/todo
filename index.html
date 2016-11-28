@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ToDo List</title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src='toDoController.js'></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-app='myApp' ng-controller='toDoController'>
+	<div class='container' >
+		<div class='row'>
+			<div class="col-xs-6" id='form'>
+				<form ng-submit="add()">
+
+					<div class="form-group">
+						<h3>TODO LIST</h3>
+					    <div class="col-xs-12 ">
+					    
+					      <input ng-model="text" type="text" class="form-control" placeholder="ADD TITLE">
+					      
+					    </div>
+					    <div class="col-xs-12 ">
+					    
+					      <textarea class="form-control" rows='10' placeholder="ADD CONTENT" ng-model="content"></textarea>
+					      
+					    </div>
+					    <div class="col-xs-12 ">
+					    <input type="submit" class="btn btn-info" value='ADD'>
+					    </div>
+    				</div>
+				</form>
+				<div id ='list' class="col-xs-9" ng-show='show' ng-repeat="x in todoList track by $index">
+    				<input type="checkbox" ng-model="x.status"> 
+    				<span ng-bind="x.text" ng-click='show_details()'></span>
+				</div>
+
+				<p class='col-xs-12' ng-if='show' >
+					<button  ng-if='show' ng-click="remove()" class="btn btn-danger">Remove marked</button>
+				</p>
+
+			</div>
+			<div id='edit' ng-show='sh' class='col-xs-4 col-xs-offset-1'>
+			 
+				 <div class="form-group">
+				 	<div id='closebtn' ng-click="close()">X</div>
+					<h3>DETAILS</h3>
+				    <div class="col-xs-12 ">
+						    
+			        	<input ng-model='details_text' value='{{details_text}}' type="text" class="form-control" placeholder="ADD TITLE">
+						      
+				    </div>
+				    <div class="col-xs-12">
+				    
+			      		<textarea ng-model='details_content' class="form-control" rows='10' placeholder="ADD CONTENT" >{{details_content}}</textarea>
+				      	 <button type="button" class="btn btn-success" ng-click='edit()'>EDIT</button>
+				    </div>
+			    </div>
+			   
+		  	</div>
+
+		</div>
+	</div>
+	
+</body>
+</html>
