@@ -12,8 +12,13 @@ span{
 	cursor: pointer;
 	color:#00bfff;
 }
-.btn,textarea, #list{
+.btn,textarea, #list,#item{
 	margin-top: 15px;
+}
+#list{
+	border:1px solid white;
+	height: 150px;
+	overflow: scroll;
 }
 #closebtn{
 	width: 30px;

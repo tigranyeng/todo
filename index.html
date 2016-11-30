@@ -8,11 +8,13 @@
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src='gulp/js/gulp.min.js'></script>
+	
 	<link rel="stylesheet" type="text/css" href="gulp/css/gulp.min.css">
 </head>
 <body ng-app='myApp' ng-controller='toDoController'>
 	<div class='container' >
 		<div class='row'>
+		
 			<div class="col-xs-6" id='form'>
 				<form ng-submit="add()">
 
@@ -33,11 +35,12 @@
 					    </div>
     				</div>
 				</form>
-				<div id ='list' class="col-xs-9" ng-show='show' ng-repeat="x in todoList track by $index">
+				<div id ="list" ng-if='show'>
+				<div id='item' class="col-xs-9"  ng-repeat="x in todoList track by $index">
     				<input type="checkbox" ng-model="x.status"> 
-    				<span ng-bind="x.text" ng-click='show_details()'></span>
+    				<span  ng-model="x.text" id='{{x.id}}' ng-click='show_details()'>{{x.text}}</span>
 				</div>
-
+				</div>
 				<p class='col-xs-12' ng-if='show' >
 					<button  ng-if='show' ng-click="remove()" class="btn btn-danger">Remove marked</button>
 				</p>
@@ -56,12 +59,12 @@
 				    <div class="col-xs-12">
 				    
 			      		<textarea ng-model='details_content' class="form-control" rows='10' placeholder="ADD CONTENT" >{{details_content}}</textarea>
-				      	 <button type="button" class="btn btn-success" ng-click='edit()'>EDIT</button>
+				      	 <button type="button" class="btn btn-success" ng-click='edit(details_id)'>EDIT</button>
 				    </div>
 			    </div>
 			   
 		  	</div>
-
+<ui-view></ui-view>
 		</div>
 	</div>
 	
